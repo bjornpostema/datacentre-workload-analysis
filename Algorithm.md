@@ -2,7 +2,7 @@
 This section discusses the essential steps of the algorithm in more detail. The three steps of the first phase of the algorithm are elaborated. 
 
 ## Step I: Find Local Maxima and Minima.
-The data is transformed into a histogram for fitting purposes (as can be seen in Figure 1). This histogram is used to find the local maxima and minima (as shown in Figure 2). The *x*-axis shows the equally sized bins (1 ms each) of the service time and the *y*-axis shows the number of occurrences of each of those bins. Service times with large values are omitted in these figures, because of the few occurrences of these service times. Each red dot indicates a local minimum, and each black dot a local maximum. 
+The data is transformed into a histogram for fitting purposes. This histogram is used to find the local maxima and minima. The *x*-axis shows the equally sized bins (1 ms each) of the service time and the *y*-axis shows the number of occurrences of each of those bins. Service times with large values are omitted in these figures, because of the few occurrences of these service times. Each red dot indicates a local minimum, and each black dot a local maximum. 
 
 Local maxima and mimina in functions are (often) obtained by finding the locations of the zero crossing of the first derivative. Since the data often has significant noise, the first derivate amplifies this noise. Therefore, the data requires some degree of smoothing; making the peaks more clear and data less erratic. 
 
@@ -13,7 +13,7 @@ In the case of histogram data, the extrema are found by comparison of a number (
 The relative local minima and maxima are determined by comparison of a number of data points. For the purpose of finding these local extrema in histogram data, we used the *Python* library from the *SciPy* package with a function called *signal.argrelextrema* with the value of *x* as the *order* argument.
 
 ## Step II: Compute Distribution Boundaries.
-From the maxima and minima obtained in the first step, we extract the boundaries of the normal distributions (as can been seen in Figure 3. The vertical lines represent these boundaries.
+From the maxima and minima obtained in the first step, we extract the boundaries of the normal distributions. The vertical lines represent these boundaries.
 
 Each pair of boundaries is characterized with a maximum surrounded by two minima. Ideally, the first step has exactly the right number of maxima and minima to determine each boundary pair, such that: |*Maxima*|=|*Minima*|+1.
 
@@ -36,7 +36,7 @@ The chi-squared test suffices in many situations. However, the number of samples
 
 With some experiments, we found that our goodness of fit value result in a mean and variance slightly closer to the observed values and in significantly better estimates of the peaks. Our goodness of fit value is different in that it considers an accurate estimation of the mean and variance to be more important than accurately fitting the lower frequencies to the actual data.
 
-## Distribution Improvement
+## Distribution Improvement.
 The second phase of the algorithm alters the distribution in two very similar ways to improve the goodness of fit. First, the bounds of the data are shifted. Second, the mean and standard deviation values are altered. These two ways are both elaborated below. 
 
 The *first way* to improve the goodness of fit slightly shifts the lower and upper bounds. The bounds are shifted in an amount equal to the employed bin size. Since the service times are rounded to the nearest millisecond, the smallest possible shift is one millisecond. 
